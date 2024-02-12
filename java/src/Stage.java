@@ -61,26 +61,36 @@ public class Stage {
     // body to draw
     AstronomicalBody curr = currUniverse.sun;
 
-    // relative position of the body
-    int x = screenCenterX+(int)(currUniverse.offsetX*currUniverse.pixelsPerSimmeter),
-        y = screenCenterY+(int)(currUniverse.offsetY*currUniverse.pixelsPerSimmeter);
+    // relative position on the screen of the universe
+    double x = screenCenterX+(currUniverse.offsetX*currUniverse.pixelsPerSimmeter),
+        y = screenCenterY+(currUniverse.offsetY*currUniverse.pixelsPerSimmeter);
     // radius relative
-    int rad = (int)(curr.bodyRadius*currUniverse.pixelsPerSimmeter);
+    double rad = (curr.bodyRadius*currUniverse.pixelsPerSimmeter);
     // relative diam of the body
-    int diam = rad*2;
+    double diam = rad*2;
 
     // ---------------------------------------
     // ---------------------------------------
     // -------- draw sun
 
     g.setColor(curr.fillColor);
-    g.fillOval(x-rad, y-rad, diam, diam);
+    g.fillOval((int)(x-rad), (int)(y-rad), (int)(diam), (int)(diam));
 
     // now for each of the satellites, draw them
 
 
     // ---------------------------------------
     // ---------------------------------------
+    for(AstronomicalBody currPlanet : currUniverse.sun.satellites){
+      double smaRadRel = (currPlanet.orbit.semiMajorAxis*currUniverse.pixelsPerSimmeter);
+      double planetRad = (currPlanet.bodyRadius*currUniverse.pixelsPerSimmeter);
+      // for curr planet, draw the orbit
+      g.setColor(Color.CYAN);
+      g.drawOval((int)(x-smaRadRel), (int)(y-smaRadRel), (int)(smaRadRel*2), (int)(smaRadRel*2));
+      // now draw the planet
+      g.setColor(currPlanet.fillColor);
+      g.fillOval((int)(x+smaRadRel-planetRad), (int)(y-planetRad), (int)(planetRad*2), (int)(planetRad*2));
+    }
   }
   
   // ========================================================

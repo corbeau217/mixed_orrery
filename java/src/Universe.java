@@ -23,7 +23,7 @@ public class Universe {
   // ========================================================
 
   // pixels per simulate meter
-  public double pixelsPerSimmeter = 0.0000001;
+  public double pixelsPerSimmeter = 0.1;
   // seconds per simulated second
   //  1 is saying there's a 1000 simulated seconds per irl second
   public double millisPerSimsecond = 1;
@@ -69,7 +69,7 @@ public class Universe {
   private Universe(){
     // add sun instance
     sun = new AstronomicalBody(
-      261600000,
+      400.0,
       Double.MAX_VALUE,
       new ArrayList<AstronomicalBody>(),
       null, // sun doesnt have an orbit
@@ -77,19 +77,22 @@ public class Universe {
     );
     // make kerbin
     AstronomicalBody kerbin = new AstronomicalBody(
-      600000,
+      75,
       84159286,
       new ArrayList<AstronomicalBody>(),
-      new Orbit(sun,13599840256.0),
+      // new Orbit(sun,13599840256.0),
+      //                261600000
+      new Orbit(sun,640),
+      // new Orbit(sun, .0),
       Color.GREEN
     );
     // add mun
     kerbin.satellites.add(
       new AstronomicalBody(
-        200000,
+        20,
         2429559.1,
         null,
-        new Orbit(kerbin, 12000000.0),
+        new Orbit(kerbin, 150.0),
         Color.DARK_GRAY
       )
     );

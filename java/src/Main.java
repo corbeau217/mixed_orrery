@@ -17,7 +17,7 @@ class Main extends JFrame {
   // ========================================================
 
   // final vars for window sizing
-  public final int START_WIDTH = 640, START_HEIGHT = 480;
+  public final int START_WIDTH = 800, START_HEIGHT = 600;
   
   // ========================================================
   // ========================================================

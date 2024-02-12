@@ -16,5 +16,6 @@ public class Orbit {
         referenceBody = r;
         
         //...
+        semiMajorAxis = sma;
     }
 }
