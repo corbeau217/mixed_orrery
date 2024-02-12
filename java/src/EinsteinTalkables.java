@@ -1,45 +1,44 @@
-import java.awt.Color;
-import java.util.List;
+// import java.time.Duration;
+import java.time.Instant;
 
 
 // ==================================================================================================
 // ==================================================================================================
 // ==================================================================================================
 
-/**
- * @brief holds information about an astronomical
- */
-public class AstronomicalBody {
+public class EinsteinTalkables {
 
   // ========================================================
   // ========================================================
   // ========================================================
 
-  double bodyRadius;
-  double soiRadius;
+  public static Instant programStart = Instant.now();
 
-  List<AstronomicalBody> satellites;
+  public static Instant lastUpdateInstant = null;
+  
+  // ========================================================
+  // ========================================================
+  // ========================================================
 
-  Orbit orbit;
-
-  Color fillColor;
+  // pixels per simulate meter
+  public static double pixelsPerSimmeter = 1;
+  // seconds per simulated second
+  //  1 is saying there's a 1000 simulated seconds per irl second
+  public static double millisPerSimsecond = 1;
 
   // ========================================================
   // ========================================================
   // ========================================================
 
-  public AstronomicalBody(double bodrad, double soirad, List<AstronomicalBody> sats, Orbit orb, Color col){
-    bodyRadius = bodrad;
-    soiRadius = soirad;
-    satellites = sats;
-    orbit = orb;
-    fillColor = col;
-  }
+  // to say that everything is offset by where (0,0) means the sun is drawn in the center of the screen
+  //  this is in meters from the center of the universe
+  public static double offsetX = 0, offsetY = 0;
 
   // ========================================================
   // ========================================================
   // ========================================================
 
+  // todo: have code here to determine if we should perform another update
 }
 
 // ==================================================================================================
