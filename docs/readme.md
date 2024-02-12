@@ -37,6 +37,14 @@
 * [Kerbol system](https://wiki.kerbalspaceprogram.com/wiki/Kerbol_System)
 * [solar system](https://en.wikipedia.org/wiki/Solar_System)
 
+## screenshots
+<details><summary>12/2/2024 <i>show/hide</i></summary>
+
+![screenshot1](./screenshots/screen_20240212_1900_1.png)
+![screenshot2](./screenshots/screen_20240212_1900_2.png)
+</details>
+
+
 ## brainstorming
 ### brainstorming pre-java sub-project
 

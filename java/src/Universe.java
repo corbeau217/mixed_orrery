@@ -23,8 +23,8 @@ public class Universe {
   // ========================================================
 
   // pixels per simulate meter
-  // public double pixelsPerSimmeter = 0.000000018;
-  public double pixelsPerSimmeter = 0.000001;
+  public double pixelsPerSimmeter = 0.000000018;
+  // public double pixelsPerSimmeter = 0.000001;
   // public double pixelsPerSimmeter = 0.00001;
   // seconds per simulated second
   //  1 is saying there's a 1000 simulated seconds per irl second
