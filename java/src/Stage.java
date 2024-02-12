@@ -82,14 +82,31 @@ public class Stage {
     // ---------------------------------------
     // ---------------------------------------
     for(AstronomicalBody currPlanet : currUniverse.sun.satellites){
-      double smaRadRel = (currPlanet.orbit.semiMajorAxis*currUniverse.pixelsPerSimmeter);
-      double planetRad = (currPlanet.bodyRadius*currUniverse.pixelsPerSimmeter);
+      
+      double smaRadRelPlanet = Math.max((currPlanet.orbit.semiMajorAxis*currUniverse.pixelsPerSimmeter),1);
+      double planetRad = Math.max((currPlanet.bodyRadius*currUniverse.pixelsPerSimmeter),1);
       // for curr planet, draw the orbit
       g.setColor(Color.CYAN);
-      g.drawOval((int)(x-smaRadRel), (int)(y-smaRadRel), (int)(smaRadRel*2), (int)(smaRadRel*2));
+      g.drawOval((int)(x-smaRadRelPlanet), (int)(y-smaRadRelPlanet), (int)(smaRadRelPlanet*2), (int)(smaRadRelPlanet*2));
+      // get planet pos
+      double planetX = x+smaRadRelPlanet, planetY = y;
       // now draw the planet
       g.setColor(currPlanet.fillColor);
-      g.fillOval((int)(x+smaRadRel-planetRad), (int)(y-planetRad), (int)(planetRad*2), (int)(planetRad*2));
+      g.fillOval((int)(planetX-planetRad), (int)(planetY-planetRad), (int)(planetRad*2), (int)(planetRad*2));
+      // for all that planets moons
+      for(AstronomicalBody currMoon : currPlanet.satellites){
+        //....
+        double smaRadRelMoon = Math.max((currMoon.orbit.semiMajorAxis*currUniverse.pixelsPerSimmeter),1);
+        double moonRad = Math.max((currMoon.bodyRadius*currUniverse.pixelsPerSimmeter),1);
+        // for curr moon, draw the orbit
+        g.setColor(Color.CYAN);
+        g.drawOval((int)(planetX-smaRadRelMoon), (int)(planetY-smaRadRelMoon), (int)(smaRadRelMoon*2), (int)(smaRadRelMoon*2));
+        // get moon pos
+        double moonX = planetX, moonY = planetY-smaRadRelMoon;
+        // now draw the moon
+        g.setColor(currMoon.fillColor);
+        g.fillOval((int)(moonX-moonRad), (int)(moonY-moonRad), (int)(moonRad*2), (int)(moonRad*2));
+      }
     }
   }
   
