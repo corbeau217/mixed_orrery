@@ -6,8 +6,25 @@
 <!-- aaaa do those here soon -->
 ---
 
+
+## screenshots
+<ul>
+  <li> Java screens:
+    <details><summary>12/2/2024 <i>show/hide</i></summary>
+      <img src="./screenshots/screen_20240212_1900_1.png">
+      <img src="./screenshots/screen_20240212_1900_2.png">
+    </details>
+  </li>
+  <!-- <li><i>more to come</i></li> -->
+  <li><i>more to come</i></li>
+</ul>
+
+---
+
 ## About
 * repo is for making solar system models done in whichever language i feel like it should be in
+<details><summary>show more</summary>
+
 * this will inherit from the work done in
   - `scala_drawing`
   - `scala_ui_testing`
@@ -29,6 +46,8 @@
 * for inital plans, we'll probably stick to the `Kerbol System` from `Kerbal Space Program 1` as it's what is most familiar in mind right now
   - inspiration didnt necessarily come from this, as it has been a long time that I've wanted to create this project.
   - watching `For All Mankind` and playing a lot of `Kerbal space program 1` lately has meant that my interest was returned and so could dust off old notes and plans
+</details>
+
 ---
 
 ## notes and references
@@ -36,14 +55,6 @@
 * [solar system model](https://en.wikipedia.org/wiki/Solar_System_model)
 * [Kerbol system](https://wiki.kerbalspaceprogram.com/wiki/Kerbol_System)
 * [solar system](https://en.wikipedia.org/wiki/Solar_System)
-
-## screenshots
-<details><summary>12/2/2024 <i>show/hide</i></summary>
-
-![screenshot1](./screenshots/screen_20240212_1900_1.png)
-![screenshot2](./screenshots/screen_20240212_1900_2.png)
-</details>
-
 
 ## brainstorming
 ### brainstorming pre-java sub-project
