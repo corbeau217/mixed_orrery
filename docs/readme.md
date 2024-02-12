@@ -3,7 +3,7 @@
 
 ## quicklinks
 * ~/readme/**[About](#about)**
-* ~/readme/**[Screenshots](#screenshots)**
+* ~/readme/**[Status](#Status)**
 * ~/readme/**[References](#references)**
 <!-- aaaa do those here soon -->
 
@@ -38,15 +38,22 @@
 
 ---
 
-## Screenshots
+## Implementations
+
+### Status
 <ul>
-  <li> Java screens:
-    <details><summary>12/2/2024 <i>show/hide</i></summary>
+  <li><img src="https://img.shields.io/badge/java%20as%202D-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"></img>
+    <details><summary><i>show/hide details</i></summary>
+      <ul>
+        <li>alpha with some feature creep</li>
+        <li>need to fill in the other planets and moons</li>
+      </ul>
+    </details>
+    <details><summary><code>12/2/2024</code> - <i>show/hide screenshots</i></summary>
       <img src="./screenshots/screen_20240212_1900_1.png">
       <img src="./screenshots/screen_20240212_1900_2.png">
     </details>
   </li>
-  <!-- <li><i>more to come</i></li> -->
   <li><i>more to come</i></li>
 </ul>
 
@@ -57,6 +64,8 @@
 * [solar system model](https://en.wikipedia.org/wiki/Solar_System_model)
 * [Kerbol system](https://wiki.kerbalspaceprogram.com/wiki/Kerbol_System)
 * [solar system](https://en.wikipedia.org/wiki/Solar_System)
+
+---
 
 ## brainstorming
 ### brainstorming pre-java sub-project
