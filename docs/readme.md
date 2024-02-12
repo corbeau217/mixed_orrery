@@ -1,23 +1,11 @@
-# mixed language orrery
+# mixed language [orrery](https://en.wikipedia.org/wiki/Orrery)
 ---
 
 ## quicklinks
-* to-do
+* ~/readme/**[About](#about)**
+* ~/readme/**[Screenshots](#screenshots)**
+* ~/readme/**[References](#references)**
 <!-- aaaa do those here soon -->
----
-
-
-## screenshots
-<ul>
-  <li> Java screens:
-    <details><summary>12/2/2024 <i>show/hide</i></summary>
-      <img src="./screenshots/screen_20240212_1900_1.png">
-      <img src="./screenshots/screen_20240212_1900_2.png">
-    </details>
-  </li>
-  <!-- <li><i>more to come</i></li> -->
-  <li><i>more to come</i></li>
-</ul>
 
 ---
 
@@ -50,7 +38,21 @@
 
 ---
 
-## notes and references
+## Screenshots
+<ul>
+  <li> Java screens:
+    <details><summary>12/2/2024 <i>show/hide</i></summary>
+      <img src="./screenshots/screen_20240212_1900_1.png">
+      <img src="./screenshots/screen_20240212_1900_2.png">
+    </details>
+  </li>
+  <!-- <li><i>more to come</i></li> -->
+  <li><i>more to come</i></li>
+</ul>
+
+---
+
+## References
 * [Orrery](https://en.wikipedia.org/wiki/Orrery)
 * [solar system model](https://en.wikipedia.org/wiki/Solar_System_model)
 * [Kerbol system](https://wiki.kerbalspaceprogram.com/wiki/Kerbol_System)
