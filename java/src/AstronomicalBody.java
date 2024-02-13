@@ -14,26 +14,54 @@ public class AstronomicalBody {
   // ========================================================
   // ========================================================
   // ========================================================
+  // ===--- specific body details
 
   double bodyRadius;
   double soiRadius;
-
-  List<AstronomicalBody> satellites;
-
-  Orbit orbit;
-
   Color fillColor;
 
   // ========================================================
   // ========================================================
   // ========================================================
+  // ===--- specific body details
+  
+  // list of things orbiting this one
+  List<Orbit> satelliteOrbitList;
 
-  public AstronomicalBody(double bodrad, double soirad, List<AstronomicalBody> sats, Orbit orb, Color col){
-    bodyRadius = bodrad;
-    soiRadius = soirad;
-    satellites = sats;
-    orbit = orb;
-    fillColor = col;
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
+  /**
+   * 
+   * @param bodyRadius radius from center of mass of this body
+   * @param soiRadius radius from center of mass that this body influences
+   * @param fillColor the fill colour for this body
+   * @param satelliteOrbitList the list of orbits surrounding this body
+   */
+  public AstronomicalBody(
+    // --------------------
+    // :: orbit data
+    double bodyRadius,
+    double soiRadius,
+    Color fillColor,
+    // --------------------
+    // :: body data
+    List<Orbit> satelliteOrbitList
+    // --------------------
+  ){
+    // ---------------------------------------------
+    // --- copy data about the astronomical body
+
+    this.bodyRadius = bodyRadius;
+    this.soiRadius = soiRadius;
+    this.fillColor = fillColor;
+    
+    // ---------------------------------------------
+    // --- ref copy the list of things orbiting it
+
+    this.satelliteOrbitList = satelliteOrbitList;
+
   }
 
   // ========================================================

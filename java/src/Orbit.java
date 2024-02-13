@@ -1,21 +1,44 @@
 public class Orbit {
-    AstronomicalBody referenceBody;
-    
-    // do the ellipse stuff later and (apo/peri)apsis
-    // double inclination;
-    // double eccentricity;
 
-    // for now this is just the radius of the circular orbit
-    double semiMajorAxis;
+  // ========================================================
+  // ========================================================
+  // ========================================================
+  // ===--- orbit details
 
-    // the percentage of the orbit that the body is through the orbit, 0 means they're starting at (sma,0), 1 is that they're back
-    // 0.0 - 1.0
-    double phase; 
+  // for now this is just the radius of the circular orbit
+  double semiMajorAxis;
 
-    public Orbit(AstronomicalBody r, double sma){
-        referenceBody = r;
-        
-        //...
-        semiMajorAxis = sma;
-    }
+  // the percentage of the orbit that the body is through the orbit, 0 means they're starting at (sma,0), 1 is that they're back
+  // 0.0 - 1.0
+  double phase; 
+
+  // the length of time for a complete orbit in seconds
+  double period;
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+  // ===--- orbital body reference
+
+  AstronomicalBody refBody;
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
+  public Orbit(double semiMajorAxis, double phase, double period, AstronomicalBody refBody){
+    // ---------------------------------------------
+    // orbit details
+
+    this.semiMajorAxis = semiMajorAxis;
+    this.phase = phase;
+    this.period = period;
+
+    // ---------------------------------------------
+    // --- which body it's for
+
+    this.refBody = refBody;
+
+    // ---------------------------------------------
+  }
 }

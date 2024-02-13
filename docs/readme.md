@@ -45,8 +45,33 @@
   <li><img src="https://img.shields.io/badge/java%20as%202D-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white"></img>
     <details><summary><i>show/hide details</i></summary>
       <ul>
-        <li>alpha with some feature creep</li>
-        <li>need to fill in the other planets and moons</li>
+        <li><code>[12/02/2024]</code> - <i>alpha with some feature creep, check todo</i></li>
+        <li>
+          <details><summary><i>show/hide todo</i></summary>
+            <ul>
+              <li><code>[12/02/2024]</code> - <i>need to fill in the other planets and moons</i></li>
+              <li><code>[13/02/2024]</code> - <strikethrough>changing over structure to list of orbiting satellites on a body, and those orbits hold what the thing is</strikethrough></li>
+              <li><code>[13/02/2024]</code> - <strikethrough>move stage paint code to solar system painter</strikethrough></li>
+              <li><code>[13/02/2024]</code> - <i>restructure window/app to be seperated out from main</i></li>
+              <li><code>[13/02/2024]</code> - <i>restructure the code to allow keyboard input</i></li>
+              <li><code>[13/02/2024]</code> - <i>restructure the code to allow mouse input</i></li>
+              <li><code>[13/02/2024]</code> - <i>add in wasd moves system center offset around</i></li>
+              <li><code>[13/02/2024]</code> - <i>add in q and e changes the zoom level of the sim</i></li>
+              <li><code>[13/02/2024]</code> - <i>placeholder?</i></li>
+            </ul>
+          </details>
+        </li>
+        <li>
+          <details><summary><i>show/hide changes</i></summary>
+            <ul>
+              <li><code>[13/02/2024]</code> - <i>changed structure to having orbit list and each orbit holds ref to body</i></li>
+              <li><code>[13/02/2024]</code> - <i>changed to name of universe to solar system</i></li>
+              <li><code>[13/02/2024]</code> - <i>made the solar system painter class</i></li>
+              <li><code>[13/02/2024]</code> - <i>added in stubs for keyboard input</i></li>
+              <li><code>[13/02/2024]</code> - <i>placeholder?</i></li>
+            </ul>
+          </details>
+        </li>
       </ul>
     </details>
     <details><summary><code>12/2/2024</code> - <i>show/hide screenshots</i></summary>

@@ -1,6 +1,8 @@
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.time.Duration;
 import java.time.Instant;
 import javax.swing.JFrame;
@@ -10,7 +12,13 @@ import javax.swing.JPanel;
 // ==================================================================================================
 // ==================================================================================================
 
-class Main extends JFrame {
+class Main extends JFrame implements KeyListener {
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
+  public static boolean DEBUG_MODE = false;
 
   // ========================================================
   // ========================================================
@@ -23,9 +31,26 @@ class Main extends JFrame {
   // ========================================================
   // ========================================================
 
+  private App canvas;
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
   public static void main(String[] args) throws Exception {
+    System.out.println("===========================\nbegin\n===========================");
+
+    if(args.length > 0){
+      for(String arguer:args){
+        System.out.println("arguement: "+arguer);
+      }
+    }
+    
     Main window = new Main();
+
     window.run();
+
+    System.out.println("===========================\nend\n===========================");
   }
 
   // ========================================================
@@ -34,11 +59,34 @@ class Main extends JFrame {
 
   private Main() {
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    App canvas = new App();
+    canvas = new App();
     this.setContentPane(canvas);
     this.pack();
     this.setVisible(true);
   }
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
+  @Override
+  public void keyTyped(KeyEvent e) {
+    canvas.stage.keyTyped(e);
+  }
+
+  @Override
+  public void keyPressed(KeyEvent e) {
+    canvas.stage.keyPressed(e);
+  }
+
+  @Override
+  public void keyReleased(KeyEvent e) {
+    canvas.stage.keyReleased(e);
+  }
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
 
   public void run() {
     while (true) {
@@ -61,27 +109,31 @@ class Main extends JFrame {
   // ========================================================
 
   class App extends JPanel {
-  Stage stage;
+    // =======================================
+    // =======================================
+    // =======================================
 
-  // =======================================
-  // =======================================
-  // =======================================
+    Stage stage;
 
-  public App() {
-    setPreferredSize(new Dimension(START_WIDTH, START_HEIGHT));
-    stage = new Stage(START_WIDTH,START_HEIGHT);
-  }
+    // =======================================
+    // =======================================
+    // =======================================
 
-  @Override
-    public void paint(Graphics g) {
-    if (isVisible()) {
-      stage.paint(g);
+    public App() {
+      setPreferredSize(new Dimension(START_WIDTH, START_HEIGHT));
+      stage = new Stage(START_WIDTH,START_HEIGHT);
     }
-  }
 
-  // =======================================
-  // =======================================
-  // =======================================
+    @Override
+      public void paint(Graphics g) {
+      if (isVisible()) {
+        stage.paint(g);
+      }
+    }
+
+    // =======================================
+    // =======================================
+    // =======================================
 
   }
 
