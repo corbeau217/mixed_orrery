@@ -18,6 +18,12 @@ class Main extends JFrame implements KeyListener {
   // ========================================================
   // ========================================================
 
+  public static long MINIMUM_FRAME_COOLDOWN = 20L;
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
   public static boolean DEBUG_MODE = false;
 
   // ========================================================
@@ -47,6 +53,9 @@ class Main extends JFrame implements KeyListener {
     }
     
     Main window = new Main();
+
+
+    // SolarSystem.getSolarSystem()
 
     window.run();
 
@@ -90,12 +99,18 @@ class Main extends JFrame implements KeyListener {
 
   public void run() {
     while (true) {
-      Instant startTime = Instant.now();
+      Instant updateStartTime = Instant.now();
+      // ------------------------------------
+      // ------------------------------------
+      SolarSystem.getSolarSystem().progressTime( updateStartTime );
+      // ------------------
       this.repaint();
-      Instant endTime = Instant.now();
-      long howLong = Duration.between(startTime, endTime).toMillis();
+      // ------------------------------------
+      // ------------------------------------
+      Instant updateEndTime = Instant.now();
+      long howLong = Duration.between(updateStartTime, updateEndTime).toMillis();
       try {
-        Thread.sleep(20L - howLong);
+        Thread.sleep(MINIMUM_FRAME_COOLDOWN - howLong);
       } catch (InterruptedException e) {
         System.out.println("thread was interrupted, but who cares?");
       } catch (IllegalArgumentException e) {

@@ -53,7 +53,7 @@
               <li><code>[13/02/2024]</code> - <strikethrough>changing over structure to list of orbiting satellites on a body, and those orbits hold what the thing is</strikethrough></li>
               <li><code>[13/02/2024]</code> - <strikethrough>move stage paint code to solar system painter</strikethrough></li>
               <li><code>[13/02/2024]</code> - <i>restructure window/app to be seperated out from main</i></li>
-              <li><code>[13/02/2024]</code> - <i>restructure the code to allow keyboard input</i></li>
+              <li><code>[13/02/2024]</code> - <strikethrough>restructure the code to allow keyboard input</strikethrough></li>
               <li><code>[13/02/2024]</code> - <i>restructure the code to allow mouse input</i></li>
               <li><code>[13/02/2024]</code> - <i>add in wasd moves system center offset around</i></li>
               <li><code>[13/02/2024]</code> - <i>add in q and e changes the zoom level of the sim</i></li>
@@ -68,6 +68,9 @@
               <li><code>[13/02/2024]</code> - <i>changed to name of universe to solar system</i></li>
               <li><code>[13/02/2024]</code> - <i>made the solar system painter class</i></li>
               <li><code>[13/02/2024]</code> - <i>added in stubs for keyboard input</i></li>
+              <li><code>[13/02/2024]</code> - <i>added in code for updating the phase of each orbital</i></li>
+              <li><code>[13/02/2024]</code> - <i>added in code for centering on a body by reference</i></li>
+              <li><code>[13/02/2024]</code> - <i>added screenshots to readme</i></li>
               <li><code>[13/02/2024]</code> - <i>placeholder?</i></li>
             </ul>
           </details>
@@ -77,6 +80,10 @@
     <details><summary><code>12/2/2024</code> - <i>show/hide screenshots</i></summary>
       <img src="./screenshots/screen_20240212_1900_1.png">
       <img src="./screenshots/screen_20240212_1900_2.png">
+    </details>
+    <details><summary><code>12/2/2024</code> - <i>show/hide screenshots</i></summary>
+      <img src="./screenshots/screen_20240213_1820_1.png">
+      <img src="./screenshots/screen_20240213_1820_2.png">
     </details>
   </li>
   <li><i>more to come</i></li>
