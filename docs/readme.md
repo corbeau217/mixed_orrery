@@ -73,6 +73,8 @@
               <li><code>[13/02/2024]</code> - <i>added screenshots to readme</i></li>
               <li><code>[13/02/2024]</code> - <i><code>wasd</code> controls scales</i></li>
               <li><code>[13/02/2024]</code> - <i><code>f</code> cycles planet/sun focus</i></li>
+              <li><code>[13/02/2024]</code> - <i>added more bodies to the system</i></li>
+              <li><code>[13/02/2024]</code> - <i><code>b</code> toggles larger/smaller planet scale</i></li>
               <li><code>[13/02/2024]</code> - <i>placeholder?</i></li>
             </ul>
           </details>

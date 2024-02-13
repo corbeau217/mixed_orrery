@@ -252,10 +252,10 @@ public class SolarSystemPainter {
     // - drawing current orbital
     g.setColor( orbitRef.refBody.fillColor );
     g.fillOval(
-      screenOffsetX + (int)( ( simOrbitalBodyPosX - orbitRef.refBody.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      screenOffsetY + (int)( ( simOrbitalBodyPosY - orbitRef.refBody.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      Math.max( (int)( ( orbitRef.refBody.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 ),
-      Math.max( (int)( ( orbitRef.refBody.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 )
+      screenOffsetX + (int)( ( simOrbitalBodyPosX - ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
+      screenOffsetY + (int)( ( simOrbitalBodyPosY - ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
+      Math.max( (int)( ( ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 ),
+      Math.max( (int)( ( ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 )
     );
 
     // ---------------------------------------

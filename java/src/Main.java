@@ -137,6 +137,8 @@ class Main extends JFrame implements KeyListener {
     private static final int ZOOM_OUT_BINDING = KeyEvent.VK_S;
     private static final int SPEED_UP_BINDING = KeyEvent.VK_D;
     private static final int SPEED_DOWN_BINDING = KeyEvent.VK_A;
+    private static final int TOGGLE_BODY_SCALED_BINDING = KeyEvent.VK_B;
+
     
     // =======================================
     // =======================================
@@ -196,6 +198,11 @@ class Main extends JFrame implements KeyListener {
         case SPEED_DOWN_BINDING:
           System.out.println("SPEED DOWN");
           SolarSystem.getSolarSystem().speedDown();
+          break;
+        // ---------------------------------
+        case TOGGLE_BODY_SCALED_BINDING:
+          System.out.println("TOGGLING BODY SCALE");
+          SolarSystem.getSolarSystem().makeBiggerBodiesThanReal = !SolarSystem.getSolarSystem().makeBiggerBodiesThanReal;
           break;
         // ---------------------------------
         default:
