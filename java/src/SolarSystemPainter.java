@@ -64,7 +64,7 @@ public class SolarSystemPainter {
     // -------- do initial painting
     
     // handoff for bg paint
-    paintBackground(g);
+    paintBackground( g );
     
     // ---------------------------------------
     // ---------------------------------------
@@ -79,9 +79,14 @@ public class SolarSystemPainter {
     // ---------------------------------------
     // -------- draw currOrbitals in system
 
-    for(Orbit currOrbital : SolarSystem.getSolarSystem().sun.satelliteOrbitList){
+    for(Orbit currOrbital : SolarSystem.getSolarSystem().systemCenter.satelliteOrbitList){
       // handoff orbital drawing each
-      paintOrbital(g, currOrbital, simSystemCenterPosX, simSystemCenterPosY);
+      paintOrbital(
+        g,
+        currOrbital,
+        simSystemCenterPosX,
+        simSystemCenterPosY
+      );
     }
 
     // ---------------------------------------
@@ -91,7 +96,11 @@ public class SolarSystemPainter {
     // -------- draw currOrbitals in system
 
     // handoff for sun paint
-    paintStar(g, simSystemCenterPosX, simSystemCenterPosY);
+    paintStar(
+      g,
+      SolarSystem.getSolarSystem().offsetX,
+      SolarSystem.getSolarSystem().offsetY
+    );
 
     // ---------------------------------------
     // ---------------------------------------
@@ -130,20 +139,20 @@ public class SolarSystemPainter {
   /**
    * @brief delegation of painting the sun
    * @param g graphics obj to paint with
-   * @param simRelativePosX x offset to paint with
-   * @param simRelativePosY y offset to paint with
+   * @param simSystemCenterPosX x offset to paint with
+   * @param simSystemCenterPosY y offset to paint with
    */
-  void paintStar(Graphics g, double simRelativePosX, double simRelativePosY){
+  void paintStar(Graphics g, double simSystemCenterPosX, double simSystemCenterPosY){
     // ---------------------------------------
     // ---------------------------------------
     // -------- simple star paint it
 
-    g.setColor( SolarSystem.getSolarSystem().sun.fillColor );
+    g.setColor( SolarSystem.getSolarSystem().systemCenter.fillColor );
     g.fillOval(
-      screenOffsetX + (int)( ( simRelativePosX - SolarSystem.getSolarSystem().sun.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      screenOffsetY + (int)( ( simRelativePosY - SolarSystem.getSolarSystem().sun.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      (int)( ( SolarSystem.getSolarSystem().sun.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      (int)( ( SolarSystem.getSolarSystem().sun.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter )
+      screenOffsetX + (int)( ( simSystemCenterPosX - SolarSystem.getSolarSystem().systemCenter.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
+      screenOffsetY + (int)( ( simSystemCenterPosY - SolarSystem.getSolarSystem().systemCenter.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
+      (int)( ( SolarSystem.getSolarSystem().systemCenter.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
+      (int)( ( SolarSystem.getSolarSystem().systemCenter.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter )
     );
 
     // ---------------------------------------
@@ -157,17 +166,17 @@ public class SolarSystemPainter {
   /**
    * @brief delegation of painting orbital, based on a provided position for center of orbit
    * @param g graphics obj to paint with
-   * @param orbitalBody the orbit data to use for painting
-   * @param simRelativePosX x offset to paint with
-   * @param simRelativePosY y offset to paint with
+   * @param orbitRef the orbit data to use for painting
+   * @param simRelativeOrbitCenterPosX x offset to paint with
+   * @param simRelativeOrbitCenterPosY y offset to paint with
    */
-  void paintOrbital(Graphics g, Orbit orbitalBody, double simRelativePosX, double simRelativePosY){
+  void paintOrbital(Graphics g, Orbit orbitRef, double simRelativeOrbitCenterPosX, double simRelativeOrbitCenterPosY){
     // ---------------------------------------
     // ---------------------------------------
     // -------- base case when not given orbit
 
     // junkable?
-    if(null==orbitalBody){
+    if(null==orbitRef){
       // junkable.
       return; // throw out the code branch
     }
@@ -183,26 +192,26 @@ public class SolarSystemPainter {
     g.setColor( orbitBaseColor );
     g.drawOval(
       // circle for now, want the middle to be relative x/y
-      screenOffsetX + (int)( ( simRelativePosX - orbitalBody.semiMajorAxis ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      screenOffsetY + (int)( ( simRelativePosY - orbitalBody.semiMajorAxis ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
+      screenOffsetX + (int)( ( simRelativeOrbitCenterPosX - orbitRef.semiMajorAxis ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
+      screenOffsetY + (int)( ( simRelativeOrbitCenterPosY - orbitRef.semiMajorAxis ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
       // use semi major axis as radius
-      (int)( ( orbitalBody.semiMajorAxis * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      (int)( ( orbitalBody.semiMajorAxis * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter )
+      Math.max( (int)( ( orbitRef.semiMajorAxis * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 ),
+      Math.max( (int)( ( orbitRef.semiMajorAxis * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 )
     );
 
     // ---------------------
     // ---------------------
     // - prepare position
 
-    double simOrbitalPosX = simRelativePosX + orbitalBody.semiMajorAxis;
-    double simOrbitalPosY = simRelativePosY;
+    double simOrbitalBodyPosX = simRelativeOrbitCenterPosX + ( orbitRef.semiMajorAxis * Math.cos( ( 2 * Math.PI - 1 ) * orbitRef.phase ) );
+    double simOrbitalBodyPosY = simRelativeOrbitCenterPosY + ( orbitRef.semiMajorAxis * Math.sin( ( 2 * Math.PI - 1 ) * orbitRef.phase ) );
 
     // ---------------------
     // ---------------------
     // - drawing soi
 
     // when not "infinite"
-    if(Double.MAX_VALUE!=orbitalBody.refBody.soiRadius){
+    if(Double.MAX_VALUE != orbitRef.refBody.soiRadius){
       // prepare color
       // todo
       // do draw
@@ -214,33 +223,39 @@ public class SolarSystemPainter {
     // - drawing orbiters
 
     // for all that planet's moons/moon's satellites (if exist)
-    if(null!=orbitalBody.refBody.satelliteOrbitList)
-    for(Orbit currOrbital : orbitalBody.refBody.satelliteOrbitList){
-      // handoff for moon painting
-      paintOrbital(g, currOrbital, simOrbitalPosX, simOrbitalPosY);
-
-      ////////// old method //////////////
-      // double smaRadRelMoon = Math.max((currMoon.orbit.semiMajorAxis*currUniverse.pixelsPerSimmeter),1);
-      // double moonRad = Math.max((currMoon.bodyRadius*currUniverse.pixelsPerSimmeter),1);
-      // // for curr moon, draw the orbit
-      // g.setColor(Color.CYAN);
-      // g.drawOval((int)(planetX-smaRadRelMoon), (int)(planetY-smaRadRelMoon), (int)(smaRadRelMoon*2), (int)(smaRadRelMoon*2));
-      // // get moon pos
-      // double moonX = planetX, moonY = planetY-smaRadRelMoon;
-      // // now draw the moon
-      // g.setColor(currMoon.fillColor);
-      // g.fillOval((int)(moonX-moonRad), (int)(moonY-moonRad), (int)(moonRad*2), (int)(moonRad*2));
+    if(null!=orbitRef.refBody.satelliteOrbitList) {
+      for(Orbit currOrbital : orbitRef.refBody.satelliteOrbitList){
+        // handoff for moon painting
+        paintOrbital(
+          g,
+          currOrbital,
+          simOrbitalBodyPosX,
+          simOrbitalBodyPosY
+        );
+  
+        ////////// old method //////////////
+        // double smaRadRelMoon = Math.max((currMoon.orbit.semiMajorAxis*currUniverse.pixelsPerSimmeter),1);
+        // double moonRad = Math.max((currMoon.bodyRadius*currUniverse.pixelsPerSimmeter),1);
+        // // for curr moon, draw the orbit
+        // g.setColor(Color.CYAN);
+        // g.drawOval((int)(planetX-smaRadRelMoon), (int)(planetY-smaRadRelMoon), (int)(smaRadRelMoon*2), (int)(smaRadRelMoon*2));
+        // // get moon pos
+        // double moonX = planetX, moonY = planetY-smaRadRelMoon;
+        // // now draw the moon
+        // g.setColor(currMoon.fillColor);
+        // g.fillOval((int)(moonX-moonRad), (int)(moonY-moonRad), (int)(moonRad*2), (int)(moonRad*2));
+      }
     }
 
     // ---------------------
     // ---------------------
-    // - drawing planet
-    g.setColor( orbitalBody.refBody.fillColor );
+    // - drawing current orbital
+    g.setColor( orbitRef.refBody.fillColor );
     g.fillOval(
-      screenOffsetX + (int)( simOrbitalPosX * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      screenOffsetY + (int)( simOrbitalPosX * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      (int)( ( orbitalBody.refBody.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      (int)( ( orbitalBody.refBody.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter )
+      screenOffsetX + (int)( ( simOrbitalBodyPosX - orbitRef.refBody.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
+      screenOffsetY + (int)( ( simOrbitalBodyPosY - orbitRef.refBody.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
+      Math.max( (int)( ( orbitRef.refBody.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 ),
+      Math.max( (int)( ( orbitRef.refBody.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 )
     );
 
     // ---------------------------------------

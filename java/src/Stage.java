@@ -19,18 +19,6 @@ public class Stage {
   // ========================================================
   // ========================================================
 
-  int screenCenterX, screenCenterY;
-
-  // ========================================================
-  // ========================================================
-  // ========================================================
-
-  Color bgColor;
-
-  // ========================================================
-  // ========================================================
-  // ========================================================
-
   SolarSystemPainter solarSystemPainter;
   
   // ========================================================
@@ -38,12 +26,10 @@ public class Stage {
   // ========================================================
 
   public Stage(int screenWidth, int screenHeight){
-    //... uhhhh  it's done elsewhere now i guess?
-    this.bgColor = Color.BLACK;
+
     this.screenWidth = screenWidth;
     this.screenHeight = screenHeight;
-    this.screenCenterX = screenWidth/2;
-    this.screenCenterY = screenHeight/2;
+
     this.solarSystemPainter = new SolarSystemPainter(screenWidth, screenHeight);
   }
 

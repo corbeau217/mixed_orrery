@@ -49,8 +49,8 @@ public class SolarSystem {
   // ========================================================
   // ========================================================
 
-  //
-  AstronomicalBody sun;
+  // reference to the system center's astronomical body
+  AstronomicalBody systemCenter;
 
   // ========================================================
   // ========================================================
@@ -58,9 +58,9 @@ public class SolarSystem {
 
   private SolarSystem(){
     // make the solar system
-    sun = generateKerbolSystem();
+    systemCenter = generateKerbolSystem();
     // set the offset to center on whatever kerbin's position is
-    this.offsetX -= (int)(sun.satelliteOrbitList.get(0).semiMajorAxis);
+    this.offsetX -= (int)(systemCenter.satelliteOrbitList.get(0).semiMajorAxis);
   }
 
   // ========================================================
@@ -70,13 +70,13 @@ public class SolarSystem {
   private AstronomicalBody generateKerbolSystem(){
     return new AstronomicalBody(
       // ====================================
-      // === kerbol details ====================
+      // === kerbol details =================
       // ====================================
       261600000.0,
       Double.MAX_VALUE, // because we only have the one solar system rn
       Color.yellow,
       // ====================================
-      // === planet list for kerbol ========
+      // === planet list for kerbol =========
       // ====================================
       Arrays.asList(
         // ====================================
@@ -136,15 +136,14 @@ public class SolarSystem {
               // ------------------------------------
               // ====================================
             )
-            //                261600000
-            // new Orbit(sun,640),
-            // new Orbit(sun, .0),
           )
           // --------------------
         )
         // ------------------------------------
         // --- other planet
+
         // ...
+        
         // ------------------------------------
         // ====================================
       )
