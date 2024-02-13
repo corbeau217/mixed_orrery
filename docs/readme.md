@@ -55,8 +55,8 @@
               <li><code>[13/02/2024]</code> - <i>restructure window/app to be seperated out from main</i></li>
               <li><code>[13/02/2024]</code> - <strikethrough>restructure the code to allow keyboard input</strikethrough></li>
               <li><code>[13/02/2024]</code> - <i>restructure the code to allow mouse input</i></li>
-              <li><code>[13/02/2024]</code> - <i>add in wasd moves system center offset around</i></li>
-              <li><code>[13/02/2024]</code> - <i>add in q and e changes the zoom level of the sim</i></li>
+              <li><code>[13/02/2024]</code> - <strikethrough>add in wasd moves system center offset around</strikethrough></li>
+              <li><code>[13/02/2024]</code> - <strikethrough>add in q and e changes the zoom level of the sim</strikethrough></li>
               <li><code>[13/02/2024]</code> - <i>placeholder?</i></li>
             </ul>
           </details>
@@ -71,6 +71,8 @@
               <li><code>[13/02/2024]</code> - <i>added in code for updating the phase of each orbital</i></li>
               <li><code>[13/02/2024]</code> - <i>added in code for centering on a body by reference</i></li>
               <li><code>[13/02/2024]</code> - <i>added screenshots to readme</i></li>
+              <li><code>[13/02/2024]</code> - <i><code>wasd</code> controls scales</i></li>
+              <li><code>[13/02/2024]</code> - <i><code>f</code> cycles planet/sun focus</i></li>
               <li><code>[13/02/2024]</code> - <i>placeholder?</i></li>
             </ul>
           </details>

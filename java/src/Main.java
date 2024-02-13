@@ -69,6 +69,7 @@ class Main extends JFrame implements KeyListener {
   private Main() {
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     canvas = new App();
+    this.addKeyListener(this);
     this.setContentPane(canvas);
     this.pack();
     this.setVisible(true);
@@ -80,17 +81,20 @@ class Main extends JFrame implements KeyListener {
 
   @Override
   public void keyTyped(KeyEvent e) {
-    canvas.stage.keyTyped(e);
+    // System.out.println("typer");
+    canvas.keyTyped(e);
   }
-
+  
   @Override
   public void keyPressed(KeyEvent e) {
-    canvas.stage.keyPressed(e);
+    // System.out.println("presser");
+    canvas.keyPressed(e);
   }
-
+  
   @Override
   public void keyReleased(KeyEvent e) {
-    canvas.stage.keyReleased(e);
+    // System.out.println("releaser");
+    canvas.keyReleased(e);
   }
 
   // ========================================================
@@ -127,8 +131,19 @@ class Main extends JFrame implements KeyListener {
     // =======================================
     // =======================================
     // =======================================
+    
+    private static final int CYCLE_FOCUS_BINDING = KeyEvent.VK_F;
+    private static final int ZOOM_IN_BINDING = KeyEvent.VK_W;
+    private static final int ZOOM_OUT_BINDING = KeyEvent.VK_S;
+    private static final int SPEED_UP_BINDING = KeyEvent.VK_D;
+    private static final int SPEED_DOWN_BINDING = KeyEvent.VK_A;
+    
+    // =======================================
+    // =======================================
+    // =======================================
 
     Stage stage;
+    
 
     // =======================================
     // =======================================
@@ -144,6 +159,52 @@ class Main extends JFrame implements KeyListener {
       if (isVisible()) {
         stage.paint(g);
       }
+    }
+
+    // =======================================
+    // =======================================
+    // =======================================
+
+    public void keyTyped(KeyEvent e) {
+      // ....
+    }
+  
+    public void keyPressed(KeyEvent e) {
+      // ....
+      switch (e.getKeyCode()) {
+        // ---------------------------------
+        case CYCLE_FOCUS_BINDING:
+          System.out.println("CYCLING FOCUS");
+          SolarSystem.getSolarSystem().cycleForwardFocus();
+          break;
+        // ---------------------------------
+        case ZOOM_IN_BINDING:
+          System.out.println("ZOOM IN");
+          SolarSystem.getSolarSystem().zoomIn();
+          break;
+        // ---------------------------------
+        case ZOOM_OUT_BINDING:
+          System.out.println("ZOOM OUT");
+          SolarSystem.getSolarSystem().zoomOut();
+          break;
+        // ---------------------------------
+        case SPEED_UP_BINDING:
+          System.out.println("SPEED UP");
+          SolarSystem.getSolarSystem().speedUp();
+          break;
+        // ---------------------------------
+        case SPEED_DOWN_BINDING:
+          System.out.println("SPEED DOWN");
+          SolarSystem.getSolarSystem().speedDown();
+          break;
+        // ---------------------------------
+        default:
+        // ---------------------------------
+      }
+    }
+  
+    public void keyReleased(KeyEvent e) {
+      // ....
     }
 
     // =======================================

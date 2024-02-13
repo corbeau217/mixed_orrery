@@ -70,7 +70,7 @@ public class SolarSystem {
 
   private boolean centerOnCurrentFocusReference = true;
   
-  private Orbit orbitalFocusReference;
+  private long orbitalFocusReferenceIndexOffset = 1;
 
   // ========================================================
   // ========================================================
@@ -87,64 +87,6 @@ public class SolarSystem {
   // ======================================================== 
 
   private AstronomicalBody generateKerbolSystem(){
-    Orbit kerbinReference = new Orbit(
-      // --------------------
-      // :: orbit data
-      13599840256.0,
-      0.0,
-      9203544.6,
-      // --------------------
-      // :: body data
-      new AstronomicalBody(
-        ((makeBiggerBodiesThanReal)? 6000000.0 : 600000.0),
-        84159286.0,
-        new Color(56,124,68),
-        Arrays.asList(
-          // ====================================
-          // ------------------------------------
-          // --- mun
-          new Orbit(
-            // --------------------
-            // :: orbit data
-            12000000.0,
-            0.25,
-            138984.4,
-            // --------------------
-            // :: body data
-            new AstronomicalBody(
-              ((makeBiggerBodiesThanReal)? 2000000.0 : 200000.0),
-              2429559.1,
-              Color.GRAY,
-              null
-            )
-            // --------------------
-          ),
-          // ------------------------------------
-          // --- minmus
-          new Orbit(
-            // --------------------
-            // :: orbit data
-            47000000.0,
-            0.75,
-            1077310.5,
-            // --------------------
-            // :: body data
-            new AstronomicalBody(
-              ((makeBiggerBodiesThanReal)? 600000.0 : 60000.0),
-              84159286.0,
-              //          #b6   fb   df
-              new Color(182,251,239),
-              null
-            )
-            // --------------------
-          )
-          // ------------------------------------
-          // ====================================
-        )
-      )
-      // --------------------
-    );
-    this.orbitalFocusReference = kerbinReference;
 
     return new AstronomicalBody(
       // ====================================
@@ -160,8 +102,63 @@ public class SolarSystem {
         // ====================================
         // ------------------------------------
         // --- kerbin
-        
-        kerbinReference
+        new Orbit(
+          // --------------------
+          // :: orbit data
+          13599840256.0,
+          0.0,
+          9203544.6,
+          // --------------------
+          // :: body data
+          new AstronomicalBody(
+            ((makeBiggerBodiesThanReal)? 6000000.0 : 600000.0),
+            84159286.0,
+            new Color(56,124,68),
+            Arrays.asList(
+              // ====================================
+              // ------------------------------------
+              // --- mun
+              new Orbit(
+                // --------------------
+                // :: orbit data
+                12000000.0,
+                0.25,
+                138984.4,
+                // --------------------
+                // :: body data
+                new AstronomicalBody(
+                  ((makeBiggerBodiesThanReal)? 2000000.0 : 200000.0),
+                  2429559.1,
+                  Color.GRAY,
+                  null
+                )
+                // --------------------
+              ),
+              // ------------------------------------
+              // --- minmus
+              new Orbit(
+                // --------------------
+                // :: orbit data
+                47000000.0,
+                0.75,
+                1077310.5,
+                // --------------------
+                // :: body data
+                new AstronomicalBody(
+                  ((makeBiggerBodiesThanReal)? 600000.0 : 60000.0),
+                  84159286.0,
+                  //          #b6   fb   df
+                  new Color(182,251,239),
+                  null
+                )
+                // --------------------
+              )
+              // ------------------------------------
+              // ====================================
+            )
+          )
+          // --------------------
+        )
 
         // ------------------------------------
         // --- other planet
@@ -208,9 +205,9 @@ public class SolarSystem {
       progressTimeOnOrbital(orbital, timeSinceStartMillis);
     }
 
-
-    
-    if(centerOnCurrentFocusReference){ setOffsetToOrbital( orbitalFocusReference ); }
+    if( centerOnCurrentFocusReference && orbitalFocusReferenceIndexOffset != 0 ){
+      setOffsetToOrbital( systemCenter.satelliteOrbitList.get( ((int)(orbitalFocusReferenceIndexOffset)-1) ) );
+    }
   }
 
   // ========================================================
@@ -236,6 +233,48 @@ public class SolarSystem {
         progressTimeOnOrbital(currOrbital, irlTimeSinceStartMillis);
       }
     }
+  }
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
+  void cycleForwardFocus(){
+    orbitalFocusReferenceIndexOffset++;
+    orbitalFocusReferenceIndexOffset %= (systemCenter.satelliteOrbitList.size()+1);
+  }
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
+  void zoomIn(){
+    pixelsPerSimmeter *= 1.25;
+  }
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
+  void zoomOut(){
+    pixelsPerSimmeter /= 1.25;
+  }
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
+
+  void speedUp(){
+    millisPerSimsecond /= 1.25;
+  }
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
+  void speedDown(){
+    millisPerSimsecond *= 1.25;
   }
 
   // ========================================================
