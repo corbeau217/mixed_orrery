@@ -58,6 +58,13 @@
               <li><code>[13/02/2024]</code> - <strikethrough>add in wasd moves system center offset around</strikethrough></li>
               <li><code>[13/02/2024]</code> - <strikethrough>add in q and e changes the zoom level of the sim</strikethrough></li>
               <li><code>[13/02/2024]</code> - <i>change over to <code>BigDecimal</code></i></li>
+              <li><code>[13/02/2024]</code> - <i>status text stuff</i></li>
+              <li><code>[13/02/2024]</code> - <i>details of placement of things showing (red/yellow/green based on percentage of max)</i></li>
+              <li><code>[13/02/2024]</code> - <i>break circle into points of known values and work between them</i></li>
+              <li><code>[13/02/2024]</code> - <i>need labels of which planet is which</i></li>
+              <li><code>[13/02/2024]</code> - <i>need status of time speed</i></li>
+              <li><code>[13/02/2024]</code> - <i>need status of scale</i></li>
+              <li><code>[13/02/2024]</code> - <i>wikis have a decent explanation of orbits too</i></li>
               <li><code>[13/02/2024]</code> - <i>placeholder?</i></li>
             </ul>
           </details>
@@ -102,6 +109,9 @@
 * [solar system model](https://en.wikipedia.org/wiki/Solar_System_model)
 * [Kerbol system](https://wiki.kerbalspaceprogram.com/wiki/Kerbol_System)
 * [solar system](https://en.wikipedia.org/wiki/Solar_System)
+* [3blue1brown linear transformations](https://www.youtube.com/watch?v=kYB8IZa5AuE&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=5)
+* [pi](https://en.wikipedia.org/wiki/Pi)
+* [double precision](https://en.wikipedia.org/wiki/Double-precision_floating-point_format)
 
 ---
 
