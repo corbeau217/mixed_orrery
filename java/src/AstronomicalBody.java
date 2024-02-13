@@ -16,8 +16,8 @@ public class AstronomicalBody {
   // ========================================================
   // ===--- specific body details
 
-  double bodyRadius;
-  double soiRadius;
+  double bodyRadiusM;
+  double soiRadiusKM;
   Color fillColor;
 
   // ========================================================
@@ -34,16 +34,16 @@ public class AstronomicalBody {
 
   /**
    * 
-   * @param bodyRadius radius from center of mass of this body
-   * @param soiRadius radius from center of mass that this body influences
+   * @param bodyRadiusM radius from center of mass of this body
+   * @param soiRadiusKM radius from center of mass that this body influences in meters
    * @param fillColor the fill colour for this body
    * @param satelliteOrbitList the list of orbits surrounding this body
    */
   public AstronomicalBody(
     // --------------------
     // :: orbit data
-    double bodyRadius,
-    double soiRadius,
+    double bodyRadiusM,
+    double soiRadiusKM,
     Color fillColor,
     // --------------------
     // :: body data
@@ -53,8 +53,8 @@ public class AstronomicalBody {
     // ---------------------------------------------
     // --- copy data about the astronomical body
 
-    this.bodyRadius = bodyRadius;
-    this.soiRadius = soiRadius;
+    this.bodyRadiusM = bodyRadiusM;
+    this.soiRadiusKM = soiRadiusKM;
     this.fillColor = fillColor;
     
     // ---------------------------------------------

@@ -6,7 +6,8 @@ public class Orbit {
   // ===--- orbit details
 
   // for now this is just the radius of the circular orbit
-  double semiMajorAxis;
+  // changing to km
+  double semiMajorAxisKM;
 
   // the percentage of the orbit that the body is through the orbit, 0 means they're starting at (sma,0), 1 is that they're back
   // 0.0 - 1.0
@@ -30,7 +31,7 @@ public class Orbit {
     // ---------------------------------------------
     // orbit details
 
-    this.semiMajorAxis = semiMajorAxis;
+    this.semiMajorAxisKM = semiMajorAxis;
     this.phase = phase;
     this.period = period;
 

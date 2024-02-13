@@ -57,6 +57,7 @@
               <li><code>[13/02/2024]</code> - <i>restructure the code to allow mouse input</i></li>
               <li><code>[13/02/2024]</code> - <strikethrough>add in wasd moves system center offset around</strikethrough></li>
               <li><code>[13/02/2024]</code> - <strikethrough>add in q and e changes the zoom level of the sim</strikethrough></li>
+              <li><code>[13/02/2024]</code> - <i>change over to <code>BigDecimal</code></i></li>
               <li><code>[13/02/2024]</code> - <i>placeholder?</i></li>
             </ul>
           </details>
@@ -75,6 +76,7 @@
               <li><code>[13/02/2024]</code> - <i><code>f</code> cycles planet/sun focus</i></li>
               <li><code>[13/02/2024]</code> - <i>added more bodies to the system</i></li>
               <li><code>[13/02/2024]</code> - <i><code>b</code> toggles larger/smaller planet scale</i></li>
+              <li><code>[13/02/2024]</code> - <i>changed scaling over in an attempt to reduce precision loss, but will need to change to <code>BigDecimal</code> to solve it</i></li>
               <li><code>[13/02/2024]</code> - <i>placeholder?</i></li>
             </ul>
           </details>

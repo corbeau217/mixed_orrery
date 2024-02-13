@@ -23,10 +23,11 @@ public class SolarSystem {
   // ========================================================
   // ========================================================
 
-  // pixels per simulate meter
-  // public double pixelsPerSimmeter = 0.000000018;
-  // public double pixelsPerSimmeter = 0.0000001;
-  public double pixelsPerSimmeter = 0.000007;
+  // pixels per simulate KM
+  // public double pixelsPerSimKM = 0.000000018;
+  // public double pixelsPerSimKM = 0.0000001;
+  public double pixelsPerSimKM = 0.000007;
+  //semiMajorAxis
 
   // seconds per simulated second
   //  1 is saying there's a 1000 simulated seconds per irl second
@@ -37,7 +38,7 @@ public class SolarSystem {
   // ========================================================
 
   // to say that everything is offset by where (0,0) means the sun is drawn in the center of the screen
-  //  this is in meters from the center of the universe
+  //  this is in KM from the center of the universe
   public double offsetX = 0.0;
   public double offsetY = 0.0;
   
@@ -106,14 +107,14 @@ public class SolarSystem {
         new Orbit(
           // --------------------
           // :: orbit data
-          5263138300.0,
+          5263138.3,
           0.178,
           2215754.2,
           // --------------------
           // :: body data
           new AstronomicalBody(
             250000.0,
-            9646663.0,
+            9646.663,
             new Color(88,57,39),
             new ArrayList<Orbit>()
           )
@@ -125,14 +126,14 @@ public class SolarSystem {
         new Orbit(
           // --------------------
           // :: orbit data
-          9832684540.0,
+          9832684.54,
           0.93,
           5657995.1,
           // --------------------
           // :: body data
           new AstronomicalBody(
             700000.0,
-            85109360.0,
+            85109.36,
             new Color(174,85,255),
             Arrays.asList(
               // ====================================
@@ -141,14 +142,14 @@ public class SolarSystem {
               new Orbit(
                 // --------------------
                 // :: orbit data
-                31500000.0,
+                31500.0,
                 0.42,
                 388587.4,
                 // --------------------
                 // :: body data
                 new AstronomicalBody(
                   13000.0,
-                  126120.0,
+                  126.12,
                   Color.GRAY,
                   null
                 )
@@ -166,14 +167,14 @@ public class SolarSystem {
         new Orbit(
           // --------------------
           // :: orbit data
-          13599840256.0,
+          13599840.256,
           0.14,
           9203544.6,
           // --------------------
           // :: body data
           new AstronomicalBody(
             600000.0,
-            84159286.0,
+            84159.286,
             new Color(56,124,68),
             Arrays.asList(
               // ====================================
@@ -182,14 +183,14 @@ public class SolarSystem {
               new Orbit(
                 // --------------------
                 // :: orbit data
-                12000000.0,
+                12000.0,
                 0.8,
                 138984.4,
                 // --------------------
                 // :: body data
                 new AstronomicalBody(
                   200000.0,
-                  2429559.1,
+                  2429.559,
                   Color.GRAY,
                   null
                 )
@@ -200,14 +201,14 @@ public class SolarSystem {
               new Orbit(
                 // --------------------
                 // :: orbit data
-                47000000.0,
+                47000.0,
                 0.095826,
                 1077310.5,
                 // --------------------
                 // :: body data
                 new AstronomicalBody(
                   60000.0,
-                  84159286.0,
+                  84159.286,
                   //          #b6   fb   df
                   new Color(182,251,239),
                   null
@@ -226,14 +227,14 @@ public class SolarSystem {
         new Orbit(
           // --------------------
           // :: orbit data
-          20726155260.0,
+          20726155.26,
           0.47,
           17315400.1,
           // --------------------
           // :: body data
           new AstronomicalBody(
             320000.0,
-            47921950.0,
+            47921.95,
             new Color(178,34,34),
             Arrays.asList(
               // ====================================
@@ -242,14 +243,14 @@ public class SolarSystem {
               new Orbit(
                 // --------------------
                 // :: orbit data
-                3200000.0,
+                3200.0,
                 0.33389,
                 65517.9,
                 // --------------------
                 // :: body data
                 new AstronomicalBody(
                   130000,
-                  1049600.0,
+                  1049.6,
                   Color.GRAY,
                   null
                 )
@@ -287,8 +288,8 @@ public class SolarSystem {
   // ========================================================
 
   void setOffsetToOrbital(Orbit refToCenter){
-    offsetX = 0.0 - ( refToCenter.semiMajorAxis * Math.cos( ( 2 * Math.PI - 1 ) * refToCenter.phase ) );
-    offsetY = 0.0 - ( refToCenter.semiMajorAxis * Math.sin( ( 2 * Math.PI - 1 ) * refToCenter.phase ) );
+    offsetX = 0.0 - ( refToCenter.semiMajorAxisKM * Math.cos( ( 2 * Math.PI - 1 ) * refToCenter.phase ) );
+    offsetY = 0.0 - ( refToCenter.semiMajorAxisKM * Math.sin( ( 2 * Math.PI - 1 ) * refToCenter.phase ) );
   }
 
   // ========================================================
@@ -351,7 +352,7 @@ public class SolarSystem {
   // ========================================================
 
   void zoomIn(){
-    pixelsPerSimmeter *= 1.25;
+    pixelsPerSimKM *= 1.25;
   }
 
   // ========================================================
@@ -359,7 +360,7 @@ public class SolarSystem {
   // ========================================================
 
   void zoomOut(){
-    pixelsPerSimmeter /= 1.25;
+    pixelsPerSimKM /= 1.25;
   }
 
   // ========================================================

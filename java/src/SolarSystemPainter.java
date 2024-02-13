@@ -7,6 +7,8 @@ import java.awt.Graphics;
 
 public class SolarSystemPainter {
 
+  public static final double LARGER_PI = 3141592.65358979323846264338327;
+
   // ========================================================
   // ========================================================
   // ========================================================
@@ -149,10 +151,10 @@ public class SolarSystemPainter {
 
     g.setColor( SolarSystem.getSolarSystem().systemCenter.fillColor );
     g.fillOval(
-      screenOffsetX + (int)( ( simSystemCenterPosX - SolarSystem.getSolarSystem().systemCenter.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      screenOffsetY + (int)( ( simSystemCenterPosY - SolarSystem.getSolarSystem().systemCenter.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      (int)( ( SolarSystem.getSolarSystem().systemCenter.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      (int)( ( SolarSystem.getSolarSystem().systemCenter.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter )
+      screenOffsetX + (int)( ( simSystemCenterPosX - SolarSystem.getSolarSystem().systemCenter.bodyRadiusM * 0.001 ) * SolarSystem.getSolarSystem().pixelsPerSimKM ),
+      screenOffsetY + (int)( ( simSystemCenterPosY - SolarSystem.getSolarSystem().systemCenter.bodyRadiusM * 0.001 ) * SolarSystem.getSolarSystem().pixelsPerSimKM ),
+      (int)( ( SolarSystem.getSolarSystem().systemCenter.bodyRadiusM * 0.001 * 2.0 ) * SolarSystem.getSolarSystem().pixelsPerSimKM ),
+      (int)( ( SolarSystem.getSolarSystem().systemCenter.bodyRadiusM * 0.001 * 2.0 ) * SolarSystem.getSolarSystem().pixelsPerSimKM )
     );
 
     // ---------------------------------------
@@ -192,26 +194,26 @@ public class SolarSystemPainter {
     g.setColor( orbitBaseColor );
     g.drawOval(
       // circle for now, want the middle to be relative x/y
-      screenOffsetX + (int)( ( simRelativeOrbitCenterPosX - orbitRef.semiMajorAxis ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      screenOffsetY + (int)( ( simRelativeOrbitCenterPosY - orbitRef.semiMajorAxis ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
+      screenOffsetX + (int)( ( simRelativeOrbitCenterPosX - orbitRef.semiMajorAxisKM ) * SolarSystem.getSolarSystem().pixelsPerSimKM ),
+      screenOffsetY + (int)( ( simRelativeOrbitCenterPosY - orbitRef.semiMajorAxisKM ) * SolarSystem.getSolarSystem().pixelsPerSimKM ),
       // use semi major axis as radius
-      Math.max( (int)( ( orbitRef.semiMajorAxis * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 ),
-      Math.max( (int)( ( orbitRef.semiMajorAxis * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 )
+      Math.max( (int)( ( orbitRef.semiMajorAxisKM * 2.0 ) * SolarSystem.getSolarSystem().pixelsPerSimKM ), 1 ),
+      Math.max( (int)( ( orbitRef.semiMajorAxisKM * 2.0 ) * SolarSystem.getSolarSystem().pixelsPerSimKM ), 1 )
     );
 
     // ---------------------
     // ---------------------
     // - prepare position
 
-    double simOrbitalBodyPosX = simRelativeOrbitCenterPosX + ( orbitRef.semiMajorAxis * Math.cos( ( 2 * Math.PI - 1 ) * orbitRef.phase ) );
-    double simOrbitalBodyPosY = simRelativeOrbitCenterPosY + ( orbitRef.semiMajorAxis * Math.sin( ( 2 * Math.PI - 1 ) * orbitRef.phase ) );
+    double simOrbitalBodyPosX = simRelativeOrbitCenterPosX + ( orbitRef.semiMajorAxisKM * Math.cos( ( 2.0 * LARGER_PI - 1000000.0 ) * (orbitRef.phase / 1000000.0) ) );
+    double simOrbitalBodyPosY = simRelativeOrbitCenterPosY + ( orbitRef.semiMajorAxisKM * Math.sin( ( 2.0 * LARGER_PI - 1000000.0 ) * (orbitRef.phase / 1000000.0) ) );
 
     // ---------------------
     // ---------------------
     // - drawing soi
 
     // when not "infinite"
-    if(Double.MAX_VALUE != orbitRef.refBody.soiRadius){
+    if(Double.MAX_VALUE != orbitRef.refBody.soiRadiusKM){
       // prepare color
       // todo
       // do draw
@@ -252,10 +254,10 @@ public class SolarSystemPainter {
     // - drawing current orbital
     g.setColor( orbitRef.refBody.fillColor );
     g.fillOval(
-      screenOffsetX + (int)( ( simOrbitalBodyPosX - ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      screenOffsetY + (int)( ( simOrbitalBodyPosY - ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadius ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ),
-      Math.max( (int)( ( ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 ),
-      Math.max( (int)( ( ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadius * 2 ) * SolarSystem.getSolarSystem().pixelsPerSimmeter ), 1 )
+      screenOffsetX + (int)( ( simOrbitalBodyPosX - ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadiusM * 0.001 ) * SolarSystem.getSolarSystem().pixelsPerSimKM ),
+      screenOffsetY + (int)( ( simOrbitalBodyPosY - ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadiusM * 0.001 ) * SolarSystem.getSolarSystem().pixelsPerSimKM ),
+      Math.max( (int)( ( ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadiusM * 0.001 * 2.0 ) * SolarSystem.getSolarSystem().pixelsPerSimKM ), 1 ),
+      Math.max( (int)( ( ((SolarSystem.getSolarSystem().makeBiggerBodiesThanReal)?SolarSystem.getSolarSystem().makeBiggerBodiesThanRealScale:1.0) * orbitRef.refBody.bodyRadiusM * 0.001 * 2.0 ) * SolarSystem.getSolarSystem().pixelsPerSimKM ), 1 )
     );
 
     // ---------------------------------------
