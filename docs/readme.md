@@ -46,6 +46,7 @@
     <details><summary><i>show/hide details</i></summary>
       <ul>
         <li><code>[12/02/2024]</code> - <i>alpha with some feature creep, check todo</i></li>
+        <li><code>[13/02/2024]</code> - <i>somewhat prototype</i></li>
         <li>
           <details><summary><i>show/hide todo</i></summary>
             <ul>
@@ -65,7 +66,8 @@
               <li><code>[13/02/2024]</code> - <i>need status of time speed</i></li>
               <li><code>[13/02/2024]</code> - <i>need status of scale</i></li>
               <li><code>[13/02/2024]</code> - <i>wikis have a decent explanation of orbits too</i></li>
-              <li><code>[13/02/2024]</code> - <i>placeholder?</i></li>
+              <li><code>[14/02/2024]</code> - <i>change to use unit circle points and multi with value??</i></li>
+              <li><code>[14/02/2024]</code> - <i>placeholder?</i></li>
             </ul>
           </details>
         </li>
@@ -110,127 +112,147 @@
 * [Kerbol system](https://wiki.kerbalspaceprogram.com/wiki/Kerbol_System)
 * [solar system](https://en.wikipedia.org/wiki/Solar_System)
 * [3blue1brown linear transformations](https://www.youtube.com/watch?v=kYB8IZa5AuE&list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab&index=5)
+  - [rotation of vectors](https://youtu.be/kYB8IZa5AuE?si=f7xmdoAd2k2IvyFF&t=509)
 * [pi](https://en.wikipedia.org/wiki/Pi)
 * [double precision](https://en.wikipedia.org/wiki/Double-precision_floating-point_format)
+* [unit circle explainer](https://www.geogebra.org/m/DHPyZp8G)
+* [unit circle rolling toy](https://www.geogebra.org/m/svXR9BB6)
 
 ---
 
 ## brainstorming
 ### brainstorming pre-java sub-project
+<ul>
+  <li><h4>original typed brainstorm <code>[8:30AM][11/02/2024]</code></h4>
+  <details><summary>show / hide</summary>
+Have the main
+Just does the applet code jpanel/jframe/paint loop, standard stuff
 
-#### original typed brainstorm [8:30AM][11/02/2024]
-<details><summary>show / hide</summary>
+Then you have stage, has the universe scale and a reference for sun
 
-    Have the main
-    Just does the applet code jpanel/jframe/paint loop, standard stuff
-
-    Then you have stage, has the universe scale and a reference for sun
-
-    The sun is a celestialBody which has things orbiting it
-    Those orbits are celestialBodies or ships
-    They have semimajor axis, eccentricities and stuff
-    Then you have the info about the body
-
-
-    Could seperate out the data from the drawn
-    Celestial body is now obj with its details and orbit info
-    Double linked? Or hands off data every draw?
-
-    Maybe it doesnt know about parent so you paint. From god view and can see the parent while painting
+The sun is a celestialBody which has things orbiting it
+Those orbits are celestialBodies or ships
+They have semimajor axis, eccentricities and stuff
+Then you have the info about the body
 
 
-    Painting is a depth first or bredth first? Probably bredth first
+Could seperate out the data from the drawn
+Celestial body is now obj with its details and orbit info
+Double linked? Or hands off data every draw?
+
+Maybe it doesnt know about parent so you paint. From god view and can see the parent while painting
 
 
-    You have the objects and orbit data
-    You set that up and its just a store
-
-    Then you can paint using that information based on current time to find where they are now
-
-    Maybe paint is dumb and doesnt calculate at all. Just paints
+Painting is a depth first or bredth first? Probably bredth first
 
 
-    Now you could thread? Or you do update before a paint cycle. Theyre seperate accesses from main/paint loop level
+You have the objects and orbit data
+You set that up and its just a store
+
+Then you can paint using that information based on current time to find where they are now
+
+Maybe paint is dumb and doesnt calculate at all. Just paints
 
 
-    tick(long chronoIntervalMillis) which hands off all children as a “time elapsed” since last update
-
-    Implication is u have a repaintTimeSince and updateTimeSince
-    Paint is dumb and main worries about that
-    But update figures out how long it takes and then predicts if it can do another before the next paint cycle?
-
-    Maybe update only happens when we need to paint. So we just keep track of
-    
-    microverseOriginTimestamp
-    lastPhysicsTimestamp
-    lastPaintTimestamp
-
-    If it there’s enough time since we last painted, we do a paint, but we need to ask for new context to paint so we’re not painting old content. Check buffer
+Now you could thread? Or you do update before a paint cycle. Theyre seperate accesses from main/paint loop level
 
 
-    What if feature creep a buffer for paintables. So the buffer is updated with pixels of what we’re painting
+tick(long chronoIntervalMillis) which hands off all children as a “time elapsed” since last update
 
-    https://en.wikipedia.org/wiki/Astronomical_object
+Implication is u have a repaintTimeSince and updateTimeSince
+Paint is dumb and main worries about that
+But update figures out how long it takes and then predicts if it can do another before the next paint cycle?
 
+Maybe update only happens when we need to paint. So we just keep track of
 
+microverseOriginTimestamp
+lastPhysicsTimestamp
+lastPaintTimestamp
 
-
-    Namables
-
-    Star is root
-
-    Planet is can have moons
-
-    Moon is can have asteroids and ships
-
-    Asteroid is can have ships
-
-    Ships is can have nothing. Terminal point
-
-    Star can have moon/asteroid/ship
+If it there’s enough time since we last painted, we do a paint, but we need to ask for new context to paint so we’re not painting old content. Check buffer
 
 
+What if feature creep a buffer for paintables. So the buffer is updated with pixels of what we’re painting
 
-    Maybe we categorise by size??
-
-    Can only have object with a classification strictly less than the parent
-
-    Becomes min heap kinda??
-    Maybe make rules list
-
-
-    Orbitals are strictly less than or equal to the parental body
-
-
-
-    Floats only when it’s strictly finite small distances otherwise it’s double
-
-    Like drawing to screen could be float
-
-    But distances are doubles
+https://en.wikipedia.org/wiki/Astronomical_object
 
 
 
 
+Namables
 
-    satellites instead of ships/asteroids
+Star is root
+
+Planet is can have moons
+
+Moon is can have asteroids and ships
+
+Asteroid is can have ships
+
+Ships is can have nothing. Terminal point
+
+Star can have moon/asteroid/ship
 
 
 
-    So structure
+Maybe we categorise by size??
+
+Can only have object with a classification strictly less than the parent
+
+Becomes min heap kinda??
+Maybe make rules list
+
+
+Orbitals are strictly less than or equal to the parental body
 
 
 
-    Main
-    Applet
-        Stage
-        Universe
-        AstronomicalBody
-            semimajoraxis
-            orbitalperiod
-            eccentricity
-            angleofinclination
-            angleofmajoraxis?
-            Optional<List> orbitals
-</details>
+Floats only when it’s strictly finite small distances otherwise it’s double
+
+Like drawing to screen could be float
+
+But distances are doubles
+
+
+
+
+
+satellites instead of ships/asteroids
+
+
+
+So structure
+
+
+
+Main
+Applet
+    Stage
+    Universe
+    AstronomicalBody
+        semimajoraxis
+        orbitalperiod
+        eccentricity
+        angleofinclination
+        angleofmajoraxis?
+        Optional&lt;List&gt; orbitals
+  </details>
+  </li>
+  <li><h4>rounding error brainstorming <code>[4:00PM][14/02/2024]</code></h4>
+try for define the different points
+try for the roation of the plane with the things then matrix math
+try for the points around the circle returner?
+try for the get via multi methods then average??
+we should polynomial it
+  then we can figure out which things are adjacent/equivalent
+    then switch between the forms
+      like sliders between universe
+      but it's sliding between the different types of things we can use until we're using one that's good
+    break everything into smaller sub problems then build it back up
+    break into matrices of smaller numbers then return for building it back up into big numbers all at once?
+  numbers that refactor themselves
+  <details><summary>show / hide</summary>
+  </details>
+  </li>
+</ul>
 
