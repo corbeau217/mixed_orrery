@@ -251,6 +251,32 @@ we should polynomial it
     break everything into smaller sub problems then build it back up
     break into matrices of smaller numbers then return for building it back up into big numbers all at once?
   numbers that refactor themselves
+in the unit circle roller, it's the yello one that's spooky
+the others there's 3/4 things lining up, but the yellow it's the one time it's kinda alone aside from blue
+  1pi/12
+   *  15d
+  5pi/12
+   *  75d
+  7pi/12
+    * 105d
+  11pi/12
+    * 165d
+  13pi/12
+    * 195d
+  17pi/12
+    * 255d
+  19pi/12
+    * 285d
+  23pi/12
+    * 345d
+oh my god we found the 8
+it's the Math.sin/Math.cos lerping
+
+actually, maybe it's the drawn circle that's a spooker :smiling_face_with_tear:
+
+
+oh my god it is, we checked documentation
+  we gotta make a hemkn circle drawing now :smiling_face_with_tear:
   <details><summary>show / hide</summary>
   </details>
   </li>
