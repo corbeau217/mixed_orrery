@@ -277,6 +277,34 @@ actually, maybe it's the drawn circle that's a spooker :smiling_face_with_tear:
 
 oh my god it is, we checked documentation
   we gotta make a hemkn circle drawing now :smiling_face_with_tear:
+
+-----------
+Corbeau — Today at 16:21
+ill have a better accuracy than [incorrectly targeted slander]
+ye
+idk if video shows it but it's like
+a sine wave in the deviation of the orbit
+like it's orbiting the path it's meant to take 
+Mungo_ — Today at 16:22
+what you could do is a variant of the circlePoints thing
+this is maybe a bit complicated
+Corbeau — Today at 16:23
+i thought it was rounding error, bc it sounds like it would be, but it's literally just that they took the laziest approach in calculating it
+-----------
+Mungo_ — Today at 16:34
+so with this, you could modify the function to draw n points on an arc of a circle
+then it would be a matter of finding where the circle intersects your camera rectangle
+Corbeau — Today at 16:35
+C:
+oooooo good point
+Mungo_ — Today at 16:35
+this is a Fun computer graphics problem :)))
+aka frustum culling
+but not really the same as the traditional problem, because usually you just discard entire objects that aren't on the screen
+-----------
+Mungo_ — Today at 16:39
+wheels were made to be reinvented
+-----------
   <details><summary>show / hide</summary>
   </details>
   </li>
