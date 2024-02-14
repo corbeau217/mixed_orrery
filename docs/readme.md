@@ -305,6 +305,7 @@ but not really the same as the traditional problem, because usually you just dis
 Mungo_ — Today at 16:39
 wheels were made to be reinvented
 -----------
+soooooo, they're all prime numbered factors of pi over 12 for the radians of each of the spooky spots??
   <details><summary>show / hide</summary>
   </details>
   </li>
