@@ -35,6 +35,12 @@ public class SolarSystemPainter {
   // ========================================================
   // ========================================================
 
+  OrbitPainter orbitPainter;
+
+  // ========================================================
+  // ========================================================
+  // ========================================================
+
   public SolarSystemPainter(int screenWidth, int screenHeight){
     // ---------------------------------------
     // ---------------------------------------
@@ -51,6 +57,11 @@ public class SolarSystemPainter {
     
     this.spaceBackgroundColor = Color.BLACK;
     this.orbitBaseColor = Color.CYAN;
+
+    // ---------------------------------------
+    // ---------------------------------------
+
+    this.orbitPainter = new OrbitPainter(screenOffsetX, screenOffsetY, Color.CYAN);
 
     // ---------------------------------------
     // ---------------------------------------
@@ -83,7 +94,7 @@ public class SolarSystemPainter {
 
     for(Orbit currOrbital : SolarSystem.getSolarSystem().systemCenter.satelliteOrbitList){
       // handoff orbital drawing each
-      paintOrbital(
+      orbitPainter.paint(
         g,
         currOrbital,
         simSystemCenterPosX,
